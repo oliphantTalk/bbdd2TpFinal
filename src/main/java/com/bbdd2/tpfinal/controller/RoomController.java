@@ -1,9 +1,5 @@
 package com.bbdd2.tpfinal.controller;
 
-import java.time.LocalDate;
-import java.util.Optional;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,12 +25,14 @@ public class RoomController {
 		this.roomService = roomService;
 	}
 
-	@ApiOperation(value = "", response = Object.class, tags = "WHITELIST REPORT") @ApiResponses(value = {
+	@ApiOperation(value = "", response = Object.class, tags = "RETRIEVE CONFIGURATION") @ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success|OK"),
 			@ApiResponse(code = 500, message = "Error") })
-	@GetMapping(path = "/rooms") public ResponseEntity<Object> getSuccessReport(
-			@RequestParam(name = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-		return ResponseEntity.of(Optional.of(""));
+	@GetMapping(path = "/rooms") public ResponseEntity<RoomConfiguration> getSuccessReport(
+			@RequestParam(name = "id", required = false) Long id ) {
+
+		// Repensar porque nadie va a buscar por id (?
+		return roomService.retrieveById(id).map(ResponseEntity::ok).orElse(ResponseEntity.badRequest().build());
 	}
 
 	@ApiOperation(value = "", response = String.class, tags = "CONFIGURATION") @ApiResponses(value = {

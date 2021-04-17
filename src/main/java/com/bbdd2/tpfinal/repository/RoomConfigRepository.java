@@ -8,5 +8,5 @@ import com.bbdd2.tpfinal.model.RoomConfiguration;
  */
 public interface RoomConfigRepository extends ElasticsearchRepository<RoomConfiguration, Long> {
 
-
+    public RoomConfiguration findByNumber(Long number);
 }
