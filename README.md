@@ -23,3 +23,6 @@ curl -X PUT "localhost:9200/{nombre_indice}/_doc/1?pretty" \
 
 curl -X GET http://localhost:9200/{nombre_indice}/_search?pretty
 
+# Elastic Search Queries
+
+https://www.baeldung.com/spring-data-elasticsearch-queries
