@@ -5,14 +5,14 @@ import org.springframework.data.annotation.Id;
 /**
  * @author nahuel.barrena on 17/4/21
  */
-public abstract class IdentifiedEntity {
+public abstract class IdentifiableEntity {
 
 	@Id
 	protected Long id;
 
-	public IdentifiedEntity(){}
+	public IdentifiableEntity(){}
 
-	public IdentifiedEntity(long id) {
+	public IdentifiableEntity(long id) {
 		this.id = id;
 	}
 

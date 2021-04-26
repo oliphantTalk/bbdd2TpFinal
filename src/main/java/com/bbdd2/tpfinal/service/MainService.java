@@ -1,13 +1,18 @@
 package com.bbdd2.tpfinal.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import com.bbdd2.tpfinal.model.AllowedHotel;
 import com.bbdd2.tpfinal.model.Hotel;
-import com.bbdd2.tpfinal.model.Offer;
-import com.bbdd2.tpfinal.model.Rate;
+import com.bbdd2.tpfinal.model.RatePlan;
 import com.bbdd2.tpfinal.model.Room;
-import com.bbdd2.tpfinal.repository.*;
+import com.bbdd2.tpfinal.repository.IAllowedHotelRepository;
+import com.bbdd2.tpfinal.repository.IHotelRepository;
+import com.bbdd2.tpfinal.repository.IRateRepository;
+import com.bbdd2.tpfinal.repository.IRoomRepository;
+import com.google.common.collect.Lists;
 
 /**
  * @author nahuel.barrena on 7/4/21
@@ -18,15 +23,13 @@ public class MainService {
 	private final IRoomRepository roomRepository;
 	private final IAllowedHotelRepository allowedHotelRepository;
 	private final IHotelRepository hotelRepository;
-	private final IOfferRepository offerRepository;
 	private final IRateRepository rateRepository;
 
 	public MainService(IRoomRepository IRoomRepository, IAllowedHotelRepository allowedHotelRepository,
-			IHotelRepository hotelRepository, IOfferRepository offerRepository, IRateRepository rateRepository) {
+			IHotelRepository hotelRepository, IRateRepository rateRepository) {
 		this.roomRepository = IRoomRepository;
 		this.allowedHotelRepository = allowedHotelRepository;
 		this.hotelRepository = hotelRepository;
-		this.offerRepository = offerRepository;
 		this.rateRepository = rateRepository;
 	}
 
@@ -46,21 +49,24 @@ public class MainService {
 		return hotelRepository.findById(id);
 	}
 
-	public Offer saveOffer(Offer offer) {
-		return offerRepository.save(offer);
-	}
-
-	public Optional<Offer> findOfferById(Long id) {
-		return offerRepository.findById(id);
-	}
-
-	public Rate saveRate(Rate rate) {
+	public RatePlan saveRate(RatePlan rate) {
 		return rateRepository.save(rate);
 	}
 
-	public Optional<Rate> findRateById(Long id) {
+	public Optional<RatePlan> findRateById(Long id) {
 		return rateRepository.findById(id);
 	}
 
+	public Object findAll() {
+		return Lists.newArrayList(roomRepository.findAll());
+	}
+
+	public List<Long> getWhiteListedHotels() {
+		return allowedHotelRepository.findById(1L).orElse(new AllowedHotel()).getWhitelistHotels();
+	}
+
+	public List<Long> getBlackListedHotels() {
+		return allowedHotelRepository.findById(1L).orElse(new AllowedHotel()).getBlacklistHotels();
+	}
 
 }

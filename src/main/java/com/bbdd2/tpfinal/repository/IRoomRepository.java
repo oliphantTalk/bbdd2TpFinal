@@ -1,5 +1,7 @@
 package com.bbdd2.tpfinal.repository;
 
+import java.util.List;
+
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import com.bbdd2.tpfinal.model.Room;
 

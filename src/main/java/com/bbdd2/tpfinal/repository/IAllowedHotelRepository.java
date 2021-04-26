@@ -7,4 +7,5 @@ import com.bbdd2.tpfinal.model.AllowedHotel;
  * @author nahuel.barrena on 17/4/21
  */
 public interface IAllowedHotelRepository extends ElasticsearchRepository<AllowedHotel, Long> {
+
 }

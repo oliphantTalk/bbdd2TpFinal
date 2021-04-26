@@ -22,7 +22,7 @@ public class MainController {
 		this.mainService = mainService;
 	}
 
-	@ApiOperation(value = "", response = Object.class, tags = "WHITELIST REPORT")
+	@ApiOperation(value = "", response = Object.class, tags = "")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success|OK"),
 			@ApiResponse(code = 500, message = "Error")
@@ -34,7 +34,7 @@ public class MainController {
 		return mainService.findRoomById(roomId).map(ResponseEntity::ok).orElse(ResponseEntity.badRequest().build());
 	}
 
-	@ApiOperation(value = "", response = String.class, tags = "CONFIGURATION")
+	@ApiOperation(value = "", response = String.class, tags = "")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success|OK"),
 			@ApiResponse(code = 500, message = "Error") }
