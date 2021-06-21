@@ -26,3 +26,5 @@ curl -X GET http://localhost:9200/{nombre_indice}/_search?pretty
 # Elastic Search Queries
 
 https://www.baeldung.com/spring-data-elasticsearch-queries
+
+https://reflectoring.io/spring-boot-elasticsearch/

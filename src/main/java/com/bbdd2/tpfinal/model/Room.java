@@ -27,7 +27,7 @@ public class Room extends IdentifiableEntity {
 	@Field(type = FieldType.Nested)
 	private Hotel hotel;
 
-	@Field(type = FieldType.Nested)
+	@Field(type = FieldType.Nested)//, includeInParent = true)
 	private RatePlan rate;
 
 	@Field(type = FieldType.Nested)
