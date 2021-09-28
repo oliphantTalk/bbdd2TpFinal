@@ -1,5 +1,6 @@
 package com.bbdd2.tpfinal.model.nested;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -7,7 +8,7 @@ public enum BedLayoutCode {
     SNG, DBL, QEN, KNG;
 
     private static final List<BedLayoutCode> VALUES =
-            List.of(values());
+            Arrays.asList(values());
     private static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
 

@@ -3,9 +3,8 @@ package com.bbdd2.tpfinal.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -16,10 +15,14 @@ import com.bbdd2.tpfinal.model.nested.BedLayout;
  * @author nahuel.barrena on 7/4/21
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(indexName = "room")
-public class Room extends IdentifiableEntity {
+public class Room {
+
+	@Id
+	protected Long id;
 
 	@Field
 	private String name;

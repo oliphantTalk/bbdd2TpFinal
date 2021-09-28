@@ -3,9 +3,8 @@ package com.bbdd2.tpfinal.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -15,11 +14,15 @@ import com.bbdd2.tpfinal.model.nested.PaymentType;
 /**
  * @author nahuel.barrena on 17/4/21
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Document(indexName = "rate")
-public class RatePlan extends IdentifiableEntity {
+public class RatePlan {
+
+	@Id
+	protected Long id;
 
 	@Field
 	private String name;
